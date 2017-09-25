@@ -25,7 +25,7 @@ public class Sentence {
     
     public boolean checkGrammar()
     {
-        
+        System.out.println("Not yet implemented.");
         return false;
     }
     

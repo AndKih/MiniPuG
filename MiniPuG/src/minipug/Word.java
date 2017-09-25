@@ -15,7 +15,7 @@ import java.util.List;
 public class Word {
     
     private final String content;
-    private final int wordType;
+    private final WordType wordType;
     
     public static final int NOUN = 1001, VERB = 1002, ADJECTIVE = 1003,
                             ADVERB = 1004, PRONOUN = 1005, PREPOSITION = 1006,
@@ -38,9 +38,9 @@ public class Word {
     {
         this.content = content;
         if(TYPES.contains(type))
-            wordType = type;
+            wordType = new WordType(type);
         else
-            wordType = -1;
+            wordType = new WordType(-1);
     }
     
     public String getWord()
@@ -50,32 +50,61 @@ public class Word {
     
     public int getWordType()
     {
-        return wordType;
+        return wordType.returnType();
     }
     
     private class WordType
     {
         private final int type;
         
-        private final List<Integer> linkedTypes;
+        //private final List<Integer> linkedTypes;
         
         public WordType(int type)
         {
             this.type = type;
-            switch(type)
+            if(type == -1)
+                System.out.println("INCORRECT TYPE, FIX IT!!!");
+            //If proper grammar is implemented, use this
+            /*switch(type)
             {
                 case NOUN:
-                    
+                    linkedTypes.add()
                     break;
                 case VERB:
                     
                     break;
-            }
+                case ADJECTIVE:
+                    
+                    break;
+                case ADVERB:
+                    
+                    break;
+                case PRONOUN:
+                    
+                    break;
+                case PREPOSITION:
+                    
+                    break;
+                case CONJUCTION:
+                    
+                    break;
+                case DETERMINER:
+                    
+                    break;
+                case EXCLAMATION:
+                    
+                    break;
+            }*/
         }
         
-        public boolean compareType(int otherType)
+        /*public boolean compareType(int otherType)
         {
-            switch
+            
+        }*/
+        
+        public int returnType()
+        {
+            return type;
         }
         
     }
