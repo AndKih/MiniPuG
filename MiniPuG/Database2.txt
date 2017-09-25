@@ -1,0 +1,6 @@
+1001pancake 1002bake 1003flat 1001cake 1002fry 1001oven 1001dough 1001food 1002eat 1001batter 1001plate 1001dinner 1001lunch 1001breakfast
+1001silverware 1001fork 1001knife 1001spoon 1002eat 1001silver 1002eat 1002dish 1001dinner 1001lunch 1001breakfast
+1001breakfast 1001pancake 1001apple 1001sandwich 1001milk 1001juice 1002drink 1002eat 1003early 1001morning
+1001morning 1001night 1001day 1001breakfast 1001sunrise
+1002eat 1001fruit 1001sandwich 1001lunch 1001dinner 1001snack 1001lunch 1001brunch 1001silverware 1002chew 1003hungry 1001pancake 1001plate
+1002sleep 1001night 1001morning 1001bed 1001pillow 1002dream 1001dream 1003sleepy 1001nightmare 1001cover
