@@ -5,6 +5,9 @@
  */
 package minipug;
 
+import javax.swing.*;
+import java.awt.EventQueue;
+
 /**
  *
  * @author Andreas
@@ -16,6 +19,7 @@ public class MiniPuG {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
         
     }
     
