@@ -60,6 +60,13 @@ public class Context {
     public void displayAllWords()
     {
         for(int idw = 0; idw < storage.size(); ++idw)
-            System.out.println(storage.get(idw).getWord());
+        {
+            System.out.print(storage.get(idw).getWord());
+            if(idw < storage.size()-1)
+            {
+                System.out.print(", ");
+            }
+        }
+        
     }
 }
