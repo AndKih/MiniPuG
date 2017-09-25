@@ -22,7 +22,7 @@ public class contextFileReader {
     
     //snabb ändring
     
-    public List<Context> contextReader(String adress) throws FileNotFoundException, IOException
+    public static List<Context> contextReader(String adress) throws FileNotFoundException, IOException
     {
         BufferedReader br = new BufferedReader(new FileReader(adress));
         List<Context> contextList = new ArrayList<>();
@@ -32,10 +32,11 @@ public class contextFileReader {
         //each line is a context
         while ((line = br.readLine()) != null) {
             List<Word> wl = new ArrayList<>();// a new wordlist for each line
-            
             // read every word
             String word = ""; //current word from line
             String wordType = ""; //current type from line
+            
+            String contextName = "";
             
             //words from line
             for(int iw = 0; iw < line.length(); iw++)
@@ -48,8 +49,16 @@ public class contextFileReader {
                     //if a word has been read, add to wordlist
                     if(word.length() > 0)
                     {
-                        int t = Integer.parseInt(wordType);
-                        wl.add(new Word(word, t));
+                        //if no contextname is saved then word is name
+                        if(contextName.length() > 0)
+                        {
+                            int t = Integer.parseInt(wordType);
+                            wl.add(new Word(word, t));
+                        }
+                        else
+                        {
+                            contextName = word;
+                        }
                         
                     }
                     word = "";
@@ -68,6 +77,7 @@ public class contextFileReader {
                     }
                 }
             }
+            contextList.add(new Context(contextName, wl));
          }
         
         return contextList;
