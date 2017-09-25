@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * This class exists to store the context of a sentence.
+ * Compared to a sentence, the context does not require
+ * any kind of sentence structure.
  * @author Andreas
  */
 

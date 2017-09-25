@@ -12,15 +12,19 @@ package minipug;
 public class Word {
     
     private final String content;
+    private final String wordType;
     
-    public Word(String init)
+    public Word(String content, String type)
     {
-        content = init;
+        this.content = content;
+        wordType = type;
     }
     
     public String getWord()
     {
         return content;
     }
+    
+    
     
 }
