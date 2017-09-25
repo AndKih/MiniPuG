@@ -9,16 +9,18 @@ package minipug;
  *
  * @author Andreas
  */
-public class MiniPuG {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        
-        
+public class Word {
+    
+    private final String content;
+    
+    public Word(String init)
+    {
+        content = init;
+    }
+    
+    public String getWord()
+    {
+        return content;
     }
     
 }
