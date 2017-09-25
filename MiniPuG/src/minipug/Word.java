@@ -5,6 +5,9 @@
  */
 package minipug;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Andreas
@@ -12,16 +15,33 @@ package minipug;
 public class Word {
     
     private final String content;
-    private final String wordType;
+    private final int wordType;
     
     public static final int NOUN = 1001, VERB = 1002, ADJECTIVE = 1003,
                             ADVERB = 1004, PRONOUN = 1005, PREPOSITION = 1006,
                             CONJUCTION = 1007, DETERMINER = 1008, EXCLAMATION = 1009;
+    private static final List<Integer> TYPES = new ArrayList<>();
     
-    public Word(String content, String type)
+    static{
+        TYPES.add(NOUN);
+        TYPES.add(VERB);
+        TYPES.add(ADJECTIVE);
+        TYPES.add(ADVERB);
+        TYPES.add(PRONOUN);
+        TYPES.add(PREPOSITION);
+        TYPES.add(CONJUCTION);
+        TYPES.add(DETERMINER);
+        TYPES.add(EXCLAMATION);
+    }
+    
+    
+    public Word(String content, int type)
     {
         this.content = content;
-        wordType = type;
+        if(TYPES.contains(type))
+            wordType = type;
+        else
+            wordType = -1;
     }
     
     public String getWord()
@@ -29,7 +49,7 @@ public class Word {
         return content;
     }
     
-    public String getWordType()
+    public int getWordType()
     {
         return wordType;
     }
