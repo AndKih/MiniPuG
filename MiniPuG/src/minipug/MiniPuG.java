@@ -23,14 +23,14 @@ public class MiniPuG {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
-        List<Context> context = contextFileReader.contextReader("database.txt");
+        List<Context> context = contextFileReader.contextReader("database2.txt");
         
         for(int ci = 0; ci < context.size(); ci++)
         {
             Context cur = context.get(ci);
-            System.out.println(cur.name);
+            System.out.print(cur.name +"\n  - ");
             cur.displayAllWords();
-            System.out.println("");
+            System.out.println("\n");
         }
         
     }

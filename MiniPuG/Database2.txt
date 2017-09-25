@@ -4,3 +4,6 @@
 1001morning 1001night 1001day 1001breakfast 1001sunrise
 1002eat 1001fruit 1001sandwich 1001lunch 1001dinner 1001snack 1001lunch 1001brunch 1001silverware 1002chew 1003hungry 1001pancake 1001plate
 1002sleep 1001night 1001morning 1001bed 1001pillow 1002dream 1001dream 1003sleepy 1001nightmare 1001cover
+1001bird 1001cookoo 1001rooster 1001wing 1001beak 1001feather 1001tail_feather 1001claw 1002fly 1001albatross 1001woodpecker 1001birdnest
+1002fly 1002fall 1001bird 1001helicopter 1001plane 1001jetpack 1001sky 1001ground
+1001house 1001window 1001wall 1006inside 1006outside 1001door 1001people 1001cottage 1001roof 1001ceiling 1001floor 1001skyscraper
