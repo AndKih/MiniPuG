@@ -19,6 +19,9 @@ import java.util.logging.Logger;
  * @author Valdemar
  */
 public class contextFileReader {
+    
+    //snabb ändring
+    
     public List<Context> contextReader(String adress) throws FileNotFoundException, IOException
     {
         BufferedReader br = new BufferedReader(new FileReader(adress));
