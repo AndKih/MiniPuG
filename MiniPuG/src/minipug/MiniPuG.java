@@ -29,6 +29,7 @@ public class MiniPuG {
         {
             Context cur = context.get(ci);
             System.out.println(cur.name);
+            cur.displayAllWords();
         }
         
     }

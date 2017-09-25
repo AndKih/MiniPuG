@@ -56,4 +56,10 @@ public class Context {
     {
         return storage.contains(word);
     }
+    
+    public void displayAllWords()
+    {
+        for(int idw = 0; idw < storage.size(); ++idw)
+            System.out.println(storage.get(idw).getWord());
+    }
 }
