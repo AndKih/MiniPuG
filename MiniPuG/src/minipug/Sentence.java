@@ -16,6 +16,7 @@ public class Sentence {
     
     private Context context;
     private List<Word> content = new LinkedList<>();
+    private static final char PERIOD = '.', QUESTION = '?', SHOUTIT = '!';
     
     public Sentence(Context context)
     {
@@ -52,6 +53,17 @@ public class Sentence {
             content.remove(index);
         else
             System.out.println("Sentence is smaller than " + index + "!");
+    }
+    
+    public String toString()
+    {
+        String result = "";
+        for(int ids = 0; ids < content.size(); ++ids)
+        {
+            result += content.get(ids).getWord();
+        }
+        result += SHOUTIT;
+        return result;
     }
     
 }

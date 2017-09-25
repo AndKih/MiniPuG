@@ -14,6 +14,10 @@ public class Word {
     private final String content;
     private final String wordType;
     
+    public static final int NOUN = 1001, VERB = 1002, ADJECTIVE = 1003,
+                            ADVERB = 1004, PRONOUN = 1005, PREPOSITION = 1006,
+                            CONJUCTION = 1007, DETERMINER = 1008, EXCLAMATION = 1009;
+    
     public Word(String content, String type)
     {
         this.content = content;
@@ -25,6 +29,9 @@ public class Word {
         return content;
     }
     
-    
+    public String getWordType()
+    {
+        return wordType;
+    }
     
 }
