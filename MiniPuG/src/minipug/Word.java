@@ -34,7 +34,6 @@ public class Word {
         TYPES.add(EXCLAMATION);
     }
     
-    
     public Word(String content, int type)
     {
         this.content = content;
@@ -52,6 +51,33 @@ public class Word {
     public int getWordType()
     {
         return wordType;
+    }
+    
+    private class WordType
+    {
+        private final int type;
+        
+        private final List<Integer> linkedTypes;
+        
+        public WordType(int type)
+        {
+            this.type = type;
+            switch(type)
+            {
+                case NOUN:
+                    
+                    break;
+                case VERB:
+                    
+                    break;
+            }
+        }
+        
+        public boolean compareType(int otherType)
+        {
+            switch
+        }
+        
     }
     
 }
