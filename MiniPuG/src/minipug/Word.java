@@ -53,6 +53,32 @@ public class Word {
         return wordType.returnType();
     }
     
+    //
+    public int[][] leastEditDistance(Word otherWord)
+    {
+        int[][] d = new int[content.length() + 1][otherWord.getWord().length() + 1];
+        d[0][0] = 0;
+        for(int i = 1; i <= content.length(); ++i)
+        {
+            d[i][0] = i;
+        }
+        for(int j = 1; j <= otherWord.getWord().length(); ++j)
+        {
+            d[0][j] = j;
+        }
+        for(int i = 1; i <= content.length(); ++i)
+            for(int j = 1; j <= otherWord.getWord().length(); ++j)
+            {
+                if(content.charAt(i - 1) == otherWord.getWord().charAt(j - 1))
+                    d[i][j] = d[i - 1][j - 1];
+                else
+                {
+                    d[i][j] = Math.min(d[i - 1][j], Math.min(d[i][j - 1], d[i - 1][j - 1])) + 1;
+                }
+            }
+        return d;
+    }
+    
     private class WordType
     {
         private final int type;

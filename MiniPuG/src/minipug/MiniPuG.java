@@ -32,6 +32,27 @@ public class MiniPuG {
             cur.displayAllWords();
         }
         
+        //Algorithm test below.
+        Word testWord1 = new Word("Sitting", Word.NOUN);
+        Word testWord2 = new Word("Kitten", Word.NOUN);
+        Word testWord3 = new Word("Sunday", Word.NOUN);
+        Word testWord4 = new Word("Saturday", Word.NOUN);
+        
+        int[][] dist = testWord1.leastEditDistance(testWord2);
+        
+        for(int i = 0; i < testWord1.getWord().length() + 1; ++i)
+        {
+            for(int j = 0; j < testWord2.getWord().length() + 1; ++j)
+            {
+                if(j != testWord2.getWord().length())
+                    System.out.print(dist[i][j] + ", ");
+                else
+                    System.out.print(dist[i][j]);
+            }
+            System.out.print("\n");
+        }
+        
+        
     }
     
 }
