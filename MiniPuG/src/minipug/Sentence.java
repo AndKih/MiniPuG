@@ -7,6 +7,7 @@ package minipug;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -18,6 +19,17 @@ public class Sentence {
     private List<Word> content = new LinkedList<>();
     private static final char PERIOD = '.', QUESTION = '?', SHOUTIT = '!';
     
+    public Sentence()
+    {
+        
+    }
+    
+    public Sentence(Sentence copyThis)
+    {
+        this.context = new Context(copyThis.getContext());
+        content.addAll(copyThis.getWordList());
+    }
+    
     public Sentence(Context context)
     {
         this.context = context;
@@ -27,6 +39,16 @@ public class Sentence {
     {
         System.out.println("Not yet implemented.");
         return false;
+    }
+    
+    public int compareSentences(Sentence template)
+    {
+        int length = getLength(), totalDistance = 0;
+        for(int idx = 0; idx < length; ++idx)
+        {
+            totalDistance += content.get(idx).leastEditDistance(template.getWordByIndex(idx));
+        }
+        return totalDistance;
     }
     
     public void addWord(Word word)
@@ -53,6 +75,36 @@ public class Sentence {
             content.remove(index);
         else
             System.out.println("Sentence is smaller than " + index + "!");
+    }
+    
+    public void mutateWithContext()
+    {
+        Random random = new Random();
+        int randomInt = random.nextInt(context.getLength()-1);
+        Word ranWord = context.getWord(randomInt);
+        int randomInt2 = random.nextInt(content.size() - 1);
+        content.remove(randomInt2);
+        content.add(randomInt2, ranWord);
+    }
+    
+    public Word getWordByIndex(int index)
+    {
+        return content.get(index);
+    }
+    
+    public int getLength()
+    {
+        return content.size();
+    }
+    
+    public Context getContext()
+    {
+        return context;
+    }
+    
+    public List<Word> getWordList()
+    {
+        return content;
     }
     
     public String toString()

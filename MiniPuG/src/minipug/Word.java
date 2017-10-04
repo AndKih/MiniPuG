@@ -53,8 +53,8 @@ public class Word {
         return wordType.returnType();
     }
     
-    //
-    public int[][] leastEditDistance(Word otherWord)
+    //Wagner-Fischer Algorithm
+    public int leastEditDistance(Word otherWord)
     {
         int[][] d = new int[content.length() + 1][otherWord.getWord().length() + 1];
         d[0][0] = 0;
@@ -76,7 +76,7 @@ public class Word {
                     d[i][j] = Math.min(d[i - 1][j], Math.min(d[i][j - 1], d[i - 1][j - 1])) + 1;
                 }
             }
-        return d;
+        return d[content.length()][otherWord.getWord().length()];
     }
     
     private class WordType

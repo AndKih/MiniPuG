@@ -31,6 +31,12 @@ public class Context {
         storage.addAll(list);
     }
     
+    public Context(Context copyThis)
+    {
+        this.name = copyThis.name;
+        storage.addAll(copyThis.getWordList());
+    }
+    
     public void addWord(Word word)
     {
         storage.add(word);
@@ -52,9 +58,32 @@ public class Context {
             System.out.println("Context is smaller than " + index + "!");
     }
     
+    public Word getWord(int index)
+    {
+        return storage.get(index);
+    }
+    
     public boolean relatedTo(Word word)
     {
         return storage.contains(word);
+    }
+    
+    public String[] getStringList()
+    {
+        String[] result = new String[storage.size()];
+        for(int ids = 0; ids < storage.size(); ++ids)
+            result[ids] = storage.get(ids).getWord();
+        return result;
+    }
+    
+    public List<Word> getWordList()
+    {
+        return storage;
+    }
+    
+    public int getLength()
+    {
+        return storage.size();
     }
     
     public void displayAllWords()
@@ -67,6 +96,5 @@ public class Context {
                 System.out.print(", ");
             }
         }
-        
     }
 }
