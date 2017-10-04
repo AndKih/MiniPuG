@@ -49,10 +49,11 @@ public class Sentence {
     public void stringToSentence(String convertThis)
     {
         String word = "";
+//        System.out.println("Using this string: " + convertThis);
         for(int ids = 0; ids < convertThis.length(); ++ids)
         {
             char curChar = convertThis.charAt(ids);
-//            System.out.println("Current char: ")
+//            System.out.println("Current char: " + curChar);
             if(curChar != ' ' && curChar != ',' && curChar != '.' && curChar != '!' && curChar != '?')
             {
 //                System.out.println("Current word: " + word);
@@ -64,6 +65,8 @@ public class Sentence {
                 content.add(new Word(word, Word.NOUN));
                 word = "";
             }
+            if(ids == convertThis.length() - 1 && (curChar != ' ' && curChar != ',' && curChar != '.' && curChar != '!' && curChar != '?'))
+                content.add(new Word(word, Word.NOUN));
         }
     }
     
@@ -76,8 +79,8 @@ public class Sentence {
     public int compareSentences(Sentence template)
     {
         int length = getLength(), totalDistance = 0;
-        System.out.println("Sentence length: " + length);
-        System.out.println("Template length: " + template.getLength());
+//        System.out.println("Sentence length: " + length);
+//        System.out.println("Template length: " + template.getLength());
         for(int idx = 0; idx < length; ++idx)
         {
             totalDistance += content.get(idx).leastEditDistance(template.getWordByIndex(idx));
