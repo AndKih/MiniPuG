@@ -35,6 +35,32 @@ public class Sentence {
         this.context = context;
     }
     
+    public Sentence(String words)
+    {
+        stringToSentence(words);
+    }
+    
+    public void stringToSentence(String convertThis)
+    {
+        String word = "";
+        for(int ids = 0; ids < convertThis.length(); ++ids)
+        {
+            char curChar = convertThis.charAt(ids);
+//            System.out.println("Current char: ")
+            if(curChar != ' ' && curChar != ',' && curChar != '.' && curChar != '!' && curChar != '?')
+            {
+//                System.out.println("Current word: " + word);
+                word += curChar;
+            }
+            else if(!word.equals(""))
+            {
+                System.out.println("Adding " + word + " to sentence.");
+                content.add(new Word(word, Word.NOUN));
+                word = "";
+            }
+        }
+    }
+    
     public boolean checkGrammar()
     {
         System.out.println("Not yet implemented.");
@@ -113,6 +139,8 @@ public class Sentence {
         for(int ids = 0; ids < content.size(); ++ids)
         {
             result += content.get(ids).getWord();
+            if(ids != content.size() - 1)
+                result += " ";
         }
         result += SHOUTIT;
         return result;

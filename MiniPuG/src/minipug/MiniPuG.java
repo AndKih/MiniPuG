@@ -27,6 +27,8 @@ public class MiniPuG{
     JTextField inputSentence;
     String input;
     
+    private static String TEMPLATE_1 = "The early bird might get the worm, but the second mouse gets the cheese.";
+    
     //Static variables.
     static List<Context> contextList;
     
@@ -108,6 +110,9 @@ public class MiniPuG{
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        
+        Sentence templateSentence = new Sentence(TEMPLATE_1);
+        System.out.println("Sentence: " + templateSentence.toString());
         
         contextList = contextFileReader.contextReader("database2.txt");
         
