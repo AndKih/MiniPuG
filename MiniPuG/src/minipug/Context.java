@@ -33,6 +33,8 @@ public class Context {
     
     public Context(Context copyThis)
     {
+//        String newName = copyThis.name;
+//        System.out.println("Context name: " + newName);
         this.name = copyThis.name;
         storage.addAll(copyThis.getWordList());
     }

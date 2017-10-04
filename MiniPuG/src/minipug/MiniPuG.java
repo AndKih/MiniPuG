@@ -111,20 +111,27 @@ public class MiniPuG{
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         List<String> tmpSentence = contextFileReader.sentenceReader("SentenceDatabase.txt", 14);
+        contextList = contextFileReader.contextReader("database3.txt");
+        Context mainContext = contextList.get(0);
+//        System.out.println(mainContext.name);
+//        System.out.println("Size of list: " + contextList.size());
         for(int i = 0; i < tmpSentence.size(); i++)
         {
             System.out.println(tmpSentence.get(i));
         }
-        Sentence templateSentence = new Sentence(TEMPLATE_1);
-        System.out.println("Sentence: " + templateSentence.toString());
-        
+//        System.out.println(mainContext.name);
+        Sentence templateSentence = new Sentence(TEMPLATE_1, mainContext);
+//        System.out.println("Sentence: " + templateSentence.toString());
+//        System.out.println(mainContext.name);
         Population database = new Population(templateSentence);
+//        System.out.println(mainContext.name);
         for(int ids = 0; ids < tmpSentence.size(); ++ids)
         {
-            database.addIndividual(new Sentence(tmpSentence.get(ids)));
+//            System.out.println(mainContext.name);
+            database.addIndividual(new Sentence(tmpSentence.get(ids), mainContext));
         }
         
-        contextList = contextFileReader.contextReader("database3.txt");
+        
         
         int generationNumber = 0;
         

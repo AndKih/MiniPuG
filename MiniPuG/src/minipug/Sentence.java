@@ -60,7 +60,7 @@ public class Sentence {
             }
             else if(!word.equals(""))
             {
-                System.out.println("Adding " + word + " to sentence.");
+//                System.out.println("Adding " + word + " to sentence.");
                 content.add(new Word(word, Word.NOUN));
                 word = "";
             }
@@ -76,6 +76,8 @@ public class Sentence {
     public int compareSentences(Sentence template)
     {
         int length = getLength(), totalDistance = 0;
+        System.out.println("Sentence length: " + length);
+        System.out.println("Template length: " + template.getLength());
         for(int idx = 0; idx < length; ++idx)
         {
             totalDistance += content.get(idx).leastEditDistance(template.getWordByIndex(idx));
