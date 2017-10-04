@@ -124,6 +124,16 @@ public class Sentence {
         content.add(randomInt2, ranWord);
     }
     
+    public boolean hasWord(Word word)
+    {
+        for(int ids = 0; ids < content.size(); ++ids)
+        {
+            if(word.Equals(content.get(ids)))
+                return true;
+        }
+        return false;
+    }
+    
     public Word getWordByIndex(int index)
     {
         return content.get(index);

@@ -131,8 +131,8 @@ public class MiniPuG{
 
 //            System.out.println(mainContext.name);
             Sentence addThis = new Sentence(tmpSentence.get(ids), mainContext);
-            System.out.println("Sentence length: " + addThis.getLength());
-            System.out.println("Sentence: " + addThis.toString());
+//            System.out.println("Sentence length: " + addThis.getLength());
+//            System.out.println("Sentence: " + addThis.toString());
             database.addIndividual(addThis);
 
 //            System.out.print(tmpSentence.get(i));
@@ -161,6 +161,13 @@ public class MiniPuG{
 //            System.out.println("Current best individual: " + database.bestIndividual().toString());
             if(generationNumber % 10000 == 0 || generationNumber == 1)
             { 
+                for(int idw = 0; idw < templateSentence.getLength(); ++idw)
+                {
+                    if(database.checkWordPresence(templateSentence.getWordByIndex(idw)))
+                        System.out.println("Word " + templateSentence.getWordByIndex(idw).getWord() + " exists in database.");
+                    else
+                        System.out.println("Word " + templateSentence.getWordByIndex(idw).getWord() + " does NOT exist in database.");
+                }
                 System.out.println("Current generation: " + generationNumber);
                 System.out.println("Current best individual: " + database.bestIndividual().toString());
                 System.out.println("Distance: " + database.bestIndividual().compareSentences(templateSentence));

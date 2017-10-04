@@ -54,6 +54,16 @@ public class Population {
         return individuals;
     }
     
+    public boolean checkWordPresence(Word word)
+    {
+        for(int idi = 0; idi < individuals.size(); ++idi)
+        {
+            if(individuals.get(idi).hasWord(word))
+                return true;
+        }
+        return false;
+    }
+    
     public Sentence getIndividual(int index)
     {
         return individuals.get(index);

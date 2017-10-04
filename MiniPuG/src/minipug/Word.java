@@ -79,6 +79,11 @@ public class Word {
         return d[content.length()][otherWord.getWord().length()];
     }
     
+    public boolean Equals(Word otherWord)
+        {
+            return content.equals(otherWord.getWord());
+        }
+    
     private class WordType
     {
         private final int type;
