@@ -124,6 +124,8 @@ public class MiniPuG{
             database.addIndividual(new Sentence(tmpSentence.get(ids)));
         }
         
+        contextList = contextFileReader.contextReader("database3.txt");
+        
         int generationNumber = 0;
         
         while(database.bestIndividual().compareSentences(templateSentence) != 0)
