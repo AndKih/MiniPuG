@@ -137,12 +137,12 @@ public class MiniPuG{
 //        int dist = testWord1.leastEditDistance(testWord2);
 //        System.out.println("Distance: " + dist);
         
-        SwingUtilities.invokeLater(new Runnable(){
-            public void run()
-            {
-                initUI();
-            }
-        });
+//        SwingUtilities.invokeLater(new Runnable(){
+//            public void run()
+//            {
+//                initUI();
+//            }
+//        });
         
 //        for(int i = 0; i < testWord1.getWord().length() + 1; ++i)
 //        {

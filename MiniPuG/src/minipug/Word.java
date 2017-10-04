@@ -36,7 +36,7 @@ public class Word {
     
     public Word(String content, int type)
     {
-        this.content = content;
+        this.content = content.toLowerCase();
         if(TYPES.contains(type))
             wordType = new WordType(type);
         else
