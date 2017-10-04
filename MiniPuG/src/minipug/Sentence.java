@@ -40,6 +40,12 @@ public class Sentence {
         stringToSentence(words);
     }
     
+    public Sentence(String words, Context context)
+    {
+        stringToSentence(words);
+        this.context = new Context(context);
+    }
+    
     public void stringToSentence(String convertThis)
     {
         String word = "";

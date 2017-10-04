@@ -42,6 +42,11 @@ public class GeneticAI {
             result.addIndividual(newSen);
         }
         
+        for(int idx = elitismOffset; idx < result.getPopSize(); ++idx)
+        {
+            mutate(result.getIndividual(idx));
+        }
+        
         return result;
     }
     

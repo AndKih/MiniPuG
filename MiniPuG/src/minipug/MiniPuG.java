@@ -118,15 +118,35 @@ public class MiniPuG{
         Sentence templateSentence = new Sentence(TEMPLATE_1);
         System.out.println("Sentence: " + templateSentence.toString());
         
-        contextList = contextFileReader.contextReader("database2.txt");
-        
-        for(int ci = 0; ci < contextList.size(); ci++)
+        Population database = new Population(templateSentence);
+        for(int ids = 0; ids < tmpSentence.size(); ++ids)
         {
-            Context cur = contextList.get(ci);
-            System.out.print(cur.name +"\n  - ");
-            cur.displayAllWords();
-            System.out.println("\n");
+            database.addIndividual(new Sentence(tmpSentence.get(ids)));
         }
+        
+        int generationNumber = 0;
+        
+        while(database.bestIndividual().compareSentences(templateSentence) != 0)
+        {
+            ++generationNumber;
+            System.out.println("Current generation: " + generationNumber);
+            System.out.println("Current best individual: " + database.bestIndividual().toString());
+            database = GeneticAI.breedNewGeneration(database);
+        }
+        
+        System.out.println("Evolution complete!!");
+        System.out.println("Generation: " + generationNumber);
+        System.out.println("Best individual: " + database.bestIndividual().toString());
+        
+//        contextList = contextFileReader.contextReader("database2.txt");
+//        
+//        for(int ci = 0; ci < contextList.size(); ci++)
+//        {
+//            Context cur = contextList.get(ci);
+//            System.out.print(cur.name +"\n  - ");
+//            cur.displayAllWords();
+//            System.out.println("\n");
+//        }
         
         //Algorithm test below.
 //        Word testWord1 = new Word("Sitting", Word.NOUN);
