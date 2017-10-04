@@ -115,11 +115,11 @@ public class MiniPuG{
         Context mainContext = contextList.get(0);
 //        System.out.println(mainContext.name);
 //        System.out.println("Size of list: " + contextList.size());
-//        for(int i = 0; i < tmpSentence.size(); i++)
-//        {
-//            System.out.println("New sentence below.");
-//            System.out.println(tmpSentence.get(i));
-//        }
+        for(int i = 0; i < tmpSentence.size(); i++)
+        {
+            System.out.println("New sentence below.");
+            System.out.println(tmpSentence.get(i));
+        }
 //        System.out.println(mainContext.name);
         Sentence templateSentence = new Sentence(TEMPLATE_1, mainContext);
 //        System.out.println("Sentence: " + templateSentence.toString());
@@ -131,8 +131,8 @@ public class MiniPuG{
 
 //            System.out.println(mainContext.name);
             Sentence addThis = new Sentence(tmpSentence.get(ids), mainContext);
-//            System.out.println("Sentence length: " + addThis.getLength());
-//            System.out.println("Sentence: " + addThis.toString());
+            System.out.println("Sentence length: " + addThis.getLength());
+            System.out.println("Sentence: " + addThis.toString());
             database.addIndividual(addThis);
 
 //            System.out.print(tmpSentence.get(i));
