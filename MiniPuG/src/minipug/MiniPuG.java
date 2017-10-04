@@ -113,7 +113,6 @@ public class MiniPuG{
         List<String> tmpSentence = contextFileReader.sentenceReader("SentenceDatabase.txt", 14);
         for(int i = 0; i < tmpSentence.size(); i++)
         {
-            System.out.print(tmpSentence.get(i));
             String tmpString = tmpSentence.get(i);
             int n = 1;
             for(int j = 0; j < tmpString.length(); j++)
@@ -124,8 +123,13 @@ public class MiniPuG{
                     n++;
                 }
             }
-            System.out.println(": " + n + " words.");
-            n=0;
+            if(true)
+            {
+                System.out.print(tmpSentence.get(i));
+                System.out.println(": " + n + " words.");
+                n=0;
+            }
+            
         }
         Sentence templateSentence = new Sentence(TEMPLATE_1);
         System.out.println("Sentence: " + templateSentence.toString());
