@@ -5,6 +5,10 @@
  */
 package minipug;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author Andreas
@@ -45,15 +49,34 @@ public class GeneticAI {
     {
         Sentence result = new Sentence();
         int length = sen1.getLength();
+        List<Integer> indices1 = generateIntegerList(sen1.getLength());
+        List<Integer> indices2 = generateIntegerList(sen2.getLength());
         for(int idx = 0; idx < length; ++idx)
         {
             if(Math.random() <= breedChance)
             {
-                result.addWord(sen1.getWordByIndex(idx));
+                result.addWord(sen1.getWordByIndex(indices1.get(idx)));
             }
             else
             {
-                result.addWord(sen2.getWordByIndex(idx));
+                result.addWord(sen2.getWordByIndex(indices2.get(idx)));
+            }
+        }
+        return result;
+    }
+    
+    private static List<Integer> generateIntegerList(int length)
+    {
+        List<Integer> result = new ArrayList<>();
+        int idx = 0;
+        Random random = new Random();
+        while(idx < length)
+        {
+            int randomIndex = random.nextInt(length - 1);
+            if(!result.contains(randomIndex))
+            {
+                result.add(randomIndex);
+                ++idx;
             }
         }
         return result;
