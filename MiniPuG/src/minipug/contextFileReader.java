@@ -96,8 +96,17 @@ public class contextFileReader {
             //new line is blank space
             if(tmp.length() > 0)
             {
-                tmp += " ";
                 words_in_tmp++;
+                if(words_in_tmp >= sentenceLength)
+                    {
+                        sentences.add(tmp);
+                        words_in_tmp = 0;
+                        tmp = "";
+                    }
+                else
+                {
+                tmp += " ";
+                }
             }
             for(int i = 0; i < line.length(); i++)
             {
