@@ -1,0 +1,36 @@
+While preparing this book, we received extraordinary support and help
+from many people, and we are deeply thankful to all of them. First
+of all, we would like to thank those who were directly involved in the
+underlying research and software development. Craig Kolb wrote the
+ray tracer rayshade used to render many of the images included in
+the book. Allan Snider developed several software tools, including a
+previewer for rayshade, and provided valuable expertise in ray-tracing.
+Daryl Hepting developed software for rendering sets defined by iterated
+function systems and provided diagrams for Chapter 8. Norma Fuller
+modeled several man-made objects incorporated into the images.
+We would like to thank Zdzis? law Pawlak and Grzegorz Rozenberg
+who initiated the contact between the Theoretical Biology Group at
+the University of Utrecht and the Computer Graphics Group at the
+University of Regina. Benoit Mandelbrot and Heinz-Otto Peitgen made
+it possible to conduct parts of the reported research at Yale University
+and the University of Bremen.
+We are also grateful to all those who shared their knowledge with
+us and made suggestions reflected in this book. Discussions and corre-
+spondence with Jules Bloomenthal, Mark de Does, Pauline Hogeweg,
+Jacqueline and Hermann Lück, Gavin Miller, Laurie Reuter, Dietmar
+Saupe and Alvy Ray Smith were particularly fruitful.
+Research reported in this book was funded by grants from the Nat-
+ural Sciences and Engineering Research Council of Canada, as well as
+an equipment donation and a research grant from Apple Computer,
+Inc. We are particularly grateful to Mark Cutter for making the sup-
+port from Apple possible. The Graphics Laboratory at the University
+of Regina also enjoys continued support from the university. The influ-
+ence of Lawrence Symes and R. Brien Maguire is deeply appreciated.
+In addition, the University of Regina and the University of Utrecht
+contributed towards travel expenses.
+We would like to thank Springer-Verlag and in particular, Gerhard
+Rossbach and Nina LaVoy from the Springer West Coast Office, for the
+expedient publishing of this book.
+Finally, we would like to thank our families and friends for their
+love, support and patience while we worked on this book.
+

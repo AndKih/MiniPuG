@@ -82,4 +82,44 @@ public class contextFileReader {
         
         return contextList;
     }
+    public static List<String> sentenceReader(String adress, int sentenceLength) throws FileNotFoundException, IOException
+    {
+        BufferedReader br = new BufferedReader(new FileReader(adress));
+        List<String> sentences = new ArrayList<>();
+        
+        String line;
+        String tmp = "";
+        int words_in_tmp = 0;
+        //read every line
+        //each line is a context
+        while ((line = br.readLine()) != null) {
+            for(int i = 0; i < line.length(); i++)
+            {
+                char cur = line.charAt(i);
+                //if blankspace, new word
+                if(cur == ' ')
+                {
+                    //see if more than 14 words in tmp
+                    words_in_tmp++;
+                    if(words_in_tmp >= sentenceLength)
+                    {
+                        sentences.add(tmp);
+                        words_in_tmp = 0;
+                        tmp = "";
+                    }
+                    else
+                    {
+                        tmp+=cur;
+                    }
+                }
+                else
+                {
+                    tmp += cur;
+                }
+            }
+            
+        }
+        
+        return sentences;
+    }
 }

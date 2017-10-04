@@ -110,7 +110,11 @@ public class MiniPuG{
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        
+        List<String> tmpSentence = contextFileReader.sentenceReader("SentenceDatabase.txt", 14);
+        for(int i = 0; i < tmpSentence.size(); i++)
+        {
+            System.out.println(tmpSentence.get(i));
+        }
         Sentence templateSentence = new Sentence(TEMPLATE_1);
         System.out.println("Sentence: " + templateSentence.toString());
         
