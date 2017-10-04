@@ -128,11 +128,27 @@ public class MiniPuG{
 //        System.out.println(mainContext.name);
         for(int ids = 0; ids < tmpSentence.size(); ++ids)
         {
+
 //            System.out.println(mainContext.name);
             Sentence addThis = new Sentence(tmpSentence.get(ids), mainContext);
-            System.out.println("Sentence length: " + addThis.getLength());
-            System.out.println("Sentence: " + addThis.toString());
+//            System.out.println("Sentence length: " + addThis.getLength());
+//            System.out.println("Sentence: " + addThis.toString());
             database.addIndividual(addThis);
+
+//            System.out.print(tmpSentence.get(i));
+//            String tmpString = tmpSentence.get(i);
+//            int n = 1;
+//            for(int j = 0; j < tmpString.length(); j++)
+//            {
+//                char c = tmpString.charAt(j);
+//                if(c == ' ')
+//                {
+//                    n++;
+//                }
+//            }
+//            System.out.println(": " + n + " words.");
+//            n=0;
+
         }
         
         
@@ -142,8 +158,14 @@ public class MiniPuG{
         while(database.bestIndividual().compareSentences(templateSentence) != 0)
         {
             ++generationNumber;
-            System.out.println("Current generation: " + generationNumber);
-            System.out.println("Current best individual: " + database.bestIndividual().toString());
+//            System.out.println("Current generation: " + generationNumber);
+//            System.out.println("Current best individual: " + database.bestIndividual().toString());
+            if(generationNumber % 10000 == 0 || generationNumber == 1)
+            { 
+                System.out.println("Current generation: " + generationNumber);
+                System.out.println("Current best individual: " + database.bestIndividual().toString());
+                System.out.println("Distance: " + database.bestIndividual().compareSentences(templateSentence));
+            }
             database = GeneticAI.breedNewGeneration(database);
         }
         

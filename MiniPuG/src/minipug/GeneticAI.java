@@ -6,6 +6,7 @@
 package minipug;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -23,7 +24,7 @@ public class GeneticAI {
     public static Population breedNewGeneration(Population pop)
     {
         Population result = new Population(pop.getTemplate());
-        
+//        System.out.println("ifKeepBest");
         if(keepBest)
         {
             Sentence bestSentence = pop.bestIndividual();
@@ -33,7 +34,8 @@ public class GeneticAI {
         int elitismOffset = 0;
         if(keepBest)
             elitismOffset = 1;
-        
+//        System.out.println("Breeding stage");
+//        System.out.println("Population size: " + pop.getPopSize());
         for(int idx = elitismOffset; idx < pop.getPopSize(); ++idx)
         {
             Sentence sen1 = pickIndividual(pop);
@@ -41,7 +43,7 @@ public class GeneticAI {
             Sentence newSen = breed(sen1, sen2);
             result.addIndividual(newSen);
         }
-        
+//        System.out.println("Mutation stage");
         for(int idx = elitismOffset; idx < result.getPopSize(); ++idx)
         {
             mutate(result.getIndividual(idx));
@@ -52,7 +54,7 @@ public class GeneticAI {
     
     private static Sentence breed(Sentence sen1, Sentence sen2)
     {
-        Sentence result = new Sentence();
+        Sentence result = new Sentence(sen1.getContext());
         int length = sen1.getLength();
         List<Integer> indices1 = generateIntegerList(sen1.getLength());
         List<Integer> indices2 = generateIntegerList(sen2.getLength());
@@ -73,17 +75,12 @@ public class GeneticAI {
     private static List<Integer> generateIntegerList(int length)
     {
         List<Integer> result = new ArrayList<>();
-        int idx = 0;
         Random random = new Random();
-        while(idx < length)
+        for(int idx = 0; idx < length; ++idx)
         {
-            int randomIndex = random.nextInt(length - 1);
-            if(!result.contains(randomIndex))
-            {
-                result.add(randomIndex);
-                ++idx;
-            }
+            result.add(idx);
         }
+        Collections.shuffle(result);
         return result;
     }
     
@@ -102,11 +99,13 @@ public class GeneticAI {
     {
         Sentence result;
         Population pickedSentences = new Population(pop.getTemplate());
+//        System.out.println("PickIndividualPRE");
         for(int idx = 0; idx < selectionSize; ++idx)
         {
             int randomIndex = (int)(Math.random()*pop.getPopSize());
             pickedSentences.addIndividual(pop.getIndividual(randomIndex));
         }
+//        System.out.println("PickIndividualPOST");
         result = pickedSentences.bestIndividual();
         return result;
     }
