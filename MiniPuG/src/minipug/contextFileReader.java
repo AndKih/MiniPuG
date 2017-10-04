@@ -93,6 +93,11 @@ public class contextFileReader {
         //read every line
         //each line is a context
         while ((line = br.readLine()) != null) {
+            //new line is blank space
+            if(tmp.length() > 0)
+            {
+                tmp += " ";
+            }
             for(int i = 0; i < line.length(); i++)
             {
                 char cur = line.charAt(i);
