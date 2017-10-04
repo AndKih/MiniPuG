@@ -71,6 +71,26 @@ public class GeneticAI {
         }
         return result;
     }
+    private static Sentence breed2(Sentence sen1, Sentence sen2)
+    {
+        Sentence result = new Sentence();
+        List<Word> words = new ArrayList();
+        //add all words to 1 list
+        for(int i = 0; i < sen1.getLength(); i++)
+        {
+            words.add(new Word(sen1.getWordByIndex(i).getWord(), 1001));
+            words.add(new Word(sen2.getWordByIndex(i).getWord(), 1001));
+        }
+        //take random words from single list and add to result
+        for(int i = 0; i < sen1.getLength(); i++)
+        {
+            int rand = (int) (Math.random() * (double) words.size());
+            rand = Math.min(rand, words.size()-1);
+            
+            result.addWord(new Word(words.get(rand).getWord(), 1001));
+        }
+        return result;
+    }
     
     private static List<Integer> generateIntegerList(int length)
     {
