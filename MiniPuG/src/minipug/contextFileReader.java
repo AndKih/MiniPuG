@@ -97,6 +97,7 @@ public class contextFileReader {
             if(tmp.length() > 0)
             {
                 tmp += " ";
+                words_in_tmp++;
             }
             for(int i = 0; i < line.length(); i++)
             {
