@@ -118,7 +118,7 @@ public class MiniPuG{
         Sentence templateSentence = new Sentence(TEMPLATE_1);
         System.out.println("Sentence: " + templateSentence.toString());
         
-        contextList = contextFileReader.contextReader("database2.txt");
+        contextList = contextFileReader.contextReader("database3.txt");
         
         for(int ci = 0; ci < contextList.size(); ci++)
         {
