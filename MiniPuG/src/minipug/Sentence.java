@@ -78,11 +78,11 @@ public class Sentence {
     
     public int compareSentences(Sentence template)
     {
-        int sentenceLengthCost = 10;
+        int sentenceLengthCost = 3;
         int length = getLength(), totalDistance = 0;
 //        System.out.println("Sentence length: " + length);
 //        System.out.println("Template length: " + template.getLength());
-        if(template.getLength() > getLength())
+        if(template.getLength() >= getLength())
         {
             for(int idx = 0; idx < template.getLength(); ++idx)
             {
@@ -100,16 +100,17 @@ public class Sentence {
         }
         else
         {
-            for(int idx = 0; idx < getLength(); ++idx)
+            for(int idy = 0; idy < getLength(); idy++)
             {
-                double xSample = (double)idx/getLength();
-                double ySample = xSample * template.getLength();
+                double ySample = (double)idy/getLength();
+                double xSample = ySample * template.getLength();
                 
-                int idy = (int)(ySample+0.5);
-//                if(idy >=  template.getLength())
-//                    System.out.println("inverted\nERRORS AND SHIT! "+idy +", " +template.getLength());
-                totalDistance += content.get(idx).
-                        leastEditDistance(template.getWordByIndex(idy));
+                int idx = (int)(xSample + 0.5);
+                
+                idx = Math.min(idx, template.getLength()-1);
+                
+                totalDistance += content.get(idy).
+                        leastEditDistance(template.getWordByIndex(idx));
             }
         }
         

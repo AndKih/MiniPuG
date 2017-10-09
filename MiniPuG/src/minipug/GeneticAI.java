@@ -40,7 +40,7 @@ public class GeneticAI {
         {
             Sentence sen1 = pickIndividual(pop);
             Sentence sen2 = pickIndividual(pop);
-            Sentence newSen = breed3(sen1, sen2);
+            Sentence newSen = breed4(sen1, sen2);
             result.addIndividual(newSen);
         }
 //        System.out.println("Mutation stage");
@@ -117,6 +117,41 @@ public class GeneticAI {
             if(rand < 0.5)
             {
                 result.addWord(words.get(ind));
+            }
+        }
+//        System.out.println(result.getLength());
+        return result;
+    }
+    private static Sentence breed4(Sentence sen1, Sentence sen2)
+    {
+        Sentence result = new Sentence(sen1.getContext());
+        
+        List<Word> words = new ArrayList();
+        
+        int len = Math.max(sen1.getLength(), sen2.getLength());
+        
+        for(int i = 0; i < len; i++)
+        {
+            if(i < sen1.getLength())
+            {
+                words.add(new Word(sen1.getWordByIndex(i).getWord(), 1001));
+            }
+            if(i < sen2.getLength())
+            {
+                words.add(new Word(sen2.getWordByIndex(i).getWord(), 1001));
+            }
+        }
+        while(result.getLength() == 0)
+        {
+            String oldWord = "";
+            for(int ind = 0; ind < words.size(); ind++)
+            {
+                double rand =  Math.random();
+                if(rand < 0.5 )
+                {
+                    result.addWord(words.get(ind));
+                    oldWord = words.get(ind).getWord();
+                }
             }
         }
 //        System.out.println(result.getLength());
