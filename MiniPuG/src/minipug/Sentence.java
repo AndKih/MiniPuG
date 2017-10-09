@@ -78,6 +78,53 @@ public class Sentence {
     
     public int compareSentences(Sentence template)
     {
+        int sentenceLengthCost = 10;
+        int length = getLength(), totalDistance = 0;
+//        System.out.println("Sentence length: " + length);
+//        System.out.println("Template length: " + template.getLength());
+        if(template.getLength() > getLength())
+        {
+            for(int idx = 0; idx < template.getLength(); ++idx)
+            {
+                double xSample = (double)idx/template.getLength(); //scale to 0-1
+                double ySample = xSample * getLength(); //scale up to 0-length
+
+                int idy = (int)(ySample+0.5);
+//                if(idy >=  getLength())
+//                    System.out.println("ERRORS AND SHIT! "+idy +", " +getLength());
+                idy = Math.min(idy, getLength()-1);
+    //            System.out.println("ID: " + idx + ", " + idy);
+                totalDistance += content.get(idy).
+                        leastEditDistance(template.getWordByIndex(idx));
+            }
+        }
+        else
+        {
+            for(int idx = 0; idx < getLength(); ++idx)
+            {
+                double xSample = (double)idx/getLength();
+                double ySample = xSample * template.getLength();
+                
+                int idy = (int)(ySample+0.5);
+//                if(idy >=  template.getLength())
+//                    System.out.println("inverted\nERRORS AND SHIT! "+idy +", " +template.getLength());
+                totalDistance += content.get(idx).
+                        leastEditDistance(template.getWordByIndex(idy));
+            }
+        }
+        
+        totalDistance += Math.abs(template.getLength() - getLength()) * sentenceLengthCost;
+//        for(int idx = 0; idx < length; ++idx)
+//        {
+//            for(int idy = 0; idy < template.getLength(); ++idy)
+//            {
+//                totalDistance += content.get(idx).leastEditDistance(template.getWordByIndex(idy));
+//            }
+//        }
+        return totalDistance;
+    }
+    public int compareSentencesAndreas(Sentence template)
+    {
         int length = getLength(), totalDistance = 0;
 //        System.out.println("Sentence length: " + length);
 //        System.out.println("Template length: " + template.getLength());

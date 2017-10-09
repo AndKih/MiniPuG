@@ -159,7 +159,7 @@ public class MiniPuG{
             ++generationNumber;
 //            System.out.println("Current generation: " + generationNumber);
 //            System.out.println("Current best individual: " + database.bestIndividual().toString());
-            if(generationNumber % 10000 == 0 || generationNumber == 1)
+            if(generationNumber % 500 == 0 || generationNumber == 1)
             { 
                 for(int idw = 0; idw < templateSentence.getLength(); ++idw)
                 {
