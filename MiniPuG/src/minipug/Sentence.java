@@ -75,8 +75,41 @@ public class Sentence {
         System.out.println("Not yet implemented.");
         return false;
     }
-    
     public int compareSentences(Sentence template)
+    {
+        return leastEditSentence(template, this);
+    }
+    public static int leastEditSentence(Sentence s1, Sentence s2)
+    {
+        
+        int[][] dist = new int[s1.getLength()+1][s2.getLength()+1];
+        for(int i = 0; i <= s1.getLength(); i++)
+        {
+            dist[i][0] = i;
+        }
+        for(int j = 0; j <= s2.getLength(); j++)
+        {
+            dist[0][j] = j;
+        }
+        for(int i = 1; i <= s1.getLength(); i++)
+        {
+            for(int j = 1; j <= s2.getLength(); j++)
+            {
+                int tmpCost = 0;
+                
+                if(!s1.getWordByIndex(i-1).Equals(s2.getWordByIndex(j-1)))
+                {
+                    tmpCost = 1;
+                }
+                dist[i][j] = Math.min(Math.min(
+                        dist[i-1][j]+1, 
+                        dist[i][j-1]+1), 
+                        dist[i-1][j-1] + tmpCost);
+            }
+        }
+        return dist[s1.getLength()][s2.getLength()];
+    }
+    private int compareSentences2(Sentence template)
     {
         int sentenceLengthCost = 3;
         int length = getLength(), totalDistance = 0;
@@ -124,6 +157,24 @@ public class Sentence {
 //        }
         return totalDistance;
     }
+    
+    private int compareSentences3(Sentence template)
+    {
+        int sentenceLengthCost = 3;
+        int totalDistance = 0;
+        
+        for(int idx = 0; idx < getLength(); idx++)
+        {
+            for(int idy = 0; idy < template.getLength(); idy++)
+            {
+                totalDistance += content.get(idx).
+                        leastEditDistance(template.getWordByIndex(idy));
+            }
+        }
+        totalDistance += Math.abs(template.getLength() - getLength()) * sentenceLengthCost;
+        
+        return totalDistance;
+    }
     public int compareSentencesAndreas(Sentence template)
     {
         int length = getLength(), totalDistance = 0;
@@ -167,7 +218,7 @@ public class Sentence {
         Random random = new Random();
         int randomInt = random.nextInt(context.getLength()-1);
         Word ranWord = context.getWord(randomInt);
-        int randomInt2 = random.nextInt(content.size() - 1);
+        int randomInt2 = random.nextInt(Math.max(content.size() - 1, 1));
         content.remove(randomInt2);
         content.add(randomInt2, ranWord);
     }
